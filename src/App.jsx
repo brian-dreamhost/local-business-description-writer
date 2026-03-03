@@ -64,6 +64,33 @@ export default function App() {
     }))
   }, [])
 
+  const fillTestData = () => {
+    setBusinessInfo({
+      businessName: 'Evergreen Plumbing & Heating',
+      businessType: { value: 'plumbing', label: 'Plumbing' },
+      streetAddress: '742 Maple Avenue',
+      city: 'Portland',
+      state: 'OR',
+      zip: '97205',
+      phone: '(503) 555-0147',
+      website: 'https://www.evergreenplumbingpdx.com',
+      yearEstablished: '2008',
+      ownerName: 'Mike Thornton',
+    })
+    setSentences([
+      'Evergreen Plumbing & Heating has been serving Portland and the surrounding area since 2008.',
+      'We specialize in residential plumbing repairs, water heater installation, and drain cleaning services.',
+      'Our team is known for same-day service and transparent, upfront pricing with no hidden fees.',
+      'Licensed, bonded, and insured with over 500 five-star reviews from happy homeowners.',
+      'Call (503) 555-0147 or visit evergreenplumbingpdx.com to schedule your appointment today.',
+    ])
+    setDirectoryStatuses({
+      'google-business-profile': 'claimed',
+      'yelp': 'claimed',
+      'facebook': 'needs-update',
+    })
+  }
+
   const handleReset = () => {
     if (window.confirm('This will clear all your business info, descriptions, and checklist progress. Are you sure?')) {
       setBusinessInfo(DEFAULT_BUSINESS_INFO)
@@ -82,7 +109,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-abyss bg-glow bg-grid">
-      <div className="relative z-10 max-w-6xl mx-auto px-4 py-8 sm:py-12 animate-fadeIn">
+      <div className="relative z-10 max-w-[1600px] mx-auto px-4 py-8 sm:py-12 animate-fadeIn">
         {/* Breadcrumb */}
         <nav className="mb-8 text-sm text-galactic">
           <a href="https://seo-tools-tau.vercel.app/" className="text-azure hover:text-white transition-colors">Free Tools</a>
@@ -100,6 +127,17 @@ export default function App() {
           <p className="text-cloudy text-base sm:text-lg max-w-3xl">
             Create consistent, correctly-formatted descriptions and NAP info for 10+ directories from a single set of inputs. Build once, adapt everywhere.
           </p>
+        </div>
+
+        {/* Fill Test Data */}
+        <div className="flex justify-end mb-4">
+          <button
+            type="button"
+            onClick={fillTestData}
+            className="px-3 py-1.5 text-xs font-mono bg-prince/20 text-prince border border-prince/30 rounded hover:bg-prince/30 transition-colors focus:outline-none focus:ring-2 focus:ring-prince focus:ring-offset-2 focus:ring-offset-abyss"
+          >
+            Fill Test Data
+          </button>
         </div>
 
         {/* Section Navigation */}
